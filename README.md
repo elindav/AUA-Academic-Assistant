@@ -1,4 +1,4 @@
-## ⚙️ How It Works
+## How It Works
 
 AUA Academic Assistant is built around a simple idea: students should be able to access their academic materials directly through Telegram without manually searching through folders or asking others to send files.
 
@@ -69,7 +69,7 @@ The bot automatically detects the new document the next time a student requests 
 
 ---
 
-## 🧩 System Architecture
+## System Architecture
 
 The project follows a straightforward request-and-response workflow:
 
