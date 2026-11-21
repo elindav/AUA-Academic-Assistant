@@ -13,9 +13,8 @@ from telegram.ext import (
     ContextTypes,
 )
 
-# ==================================================
+
 # 1. CONFIGURATION
-# ==================================================
 
 load_dotenv()
 
@@ -35,9 +34,8 @@ CATEGORIES = {
 }
 
 
-# ==================================================
+
 # 2. COURSE AND DOCUMENT FUNCTIONS
-# ==================================================
 
 def get_course_folder(course):
     """Find a course folder safely."""
@@ -153,9 +151,9 @@ def create_browser(course, category, page):
     return text, InlineKeyboardMarkup(keyboard)
 
 
-# ==================================================
+
 # 3. BASIC TELEGRAM COMMANDS
-# ==================================================
+
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
@@ -180,9 +178,8 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 
-# ==================================================
 # 4. COURSE LIST
-# ==================================================
+
 
 async def courses_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
@@ -222,9 +219,8 @@ async def courses_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(message)
 
 
-# ==================================================
+
 # 5. AUTOMATIC DOCUMENT DELIVERY
-# ==================================================
 
 def make_category_handler(category):
 
@@ -300,9 +296,8 @@ def make_category_handler(category):
     return handler
 
 
-# ==================================================
 # 6. BUTTON INTERACTIONS
-# ==================================================
+
 
 async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
@@ -334,9 +329,9 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     documents = get_documents(course, category)
 
-    # ----------------------------------------------
+
     # PAGE NAVIGATION
-    # ----------------------------------------------
+
 
     if action == "p":
 
@@ -353,9 +348,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             reply_markup=keyboard
         )
 
-    # ----------------------------------------------
     # INDIVIDUAL DOCUMENT DOWNLOAD
-    # ----------------------------------------------
 
     elif action == "f":
 
@@ -389,9 +382,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 "Sorry, I couldn't send this document."
             )
 
-    # ----------------------------------------------
     # DOWNLOAD ALL DOCUMENTS AS ZIP
-    # ----------------------------------------------
 
     elif action == "z":
 
@@ -445,9 +436,9 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             )
 
 
-# ==================================================
+
 # 7. MAIN PROGRAM
-# ==================================================
+
 
 def main():
 
